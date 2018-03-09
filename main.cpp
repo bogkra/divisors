@@ -2,9 +2,10 @@
 #include <set>
 #include <cmath>
 #include <map>
+#include <algorithm>
+
 
 // (C) 2018 Boguslaw Krawczuk
-// first fully working version, more STL and safer input needed
 
 
 using namespace std;
@@ -53,11 +54,13 @@ int main()
 
 // 2 : sieve of Erastotenes
   for (int i=2; i<=M; i++)
-    primes.insert(i);
-  for (int prime=2; prime<=sqrt(M); prime++)
+    primes.insert(i); 
+//  for_each(primes.begin(), primes.lower_bound(sqrt(M+1)), [&](int prime){//});
+  for (int prime =2; prime<=M; prime++)
     if (primes.find(prime) != primes.end())
       for (int j=2*prime; j<=M; j+=prime)
         primes.erase(j);
+//  });
 
   cout << "primes: " << endl;
   for (int i : primes)
@@ -72,8 +75,20 @@ int main()
         pv.insert(pair<int,int> (prime,value) );
 
   cout << "map: " << endl;
-  for (auto p : pv)
-    cout << p.first << ":" << p.second << " ";
+
+  int last = -1;
+  for (auto p : pv) {
+    if (last!=p.first) {
+      if (last!=-1) 
+        cout << "] ";
+      last = p.first;
+      cout << " " << p.first << " -> [" << p.second;
+    }
+    else      
+      cout << "," << p.second;
+  }
+  if (last!=-1) 
+    cout << "] ";
   cout << endl;
     
     
@@ -91,4 +106,6 @@ Requirements:
 
 Use as much STL as possible :smiley:
 */
+
+
 
