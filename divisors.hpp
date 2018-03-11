@@ -18,8 +18,7 @@ public:
   void inN();
 private:
   set<int> values, primes;
-  multimap<int,int> pv;
-  int N, M;
+  int N = 0 , M = 0;
 };
 
 

@@ -12,7 +12,6 @@
 using namespace std;
 
 
-
 void Divisors::setN(const int n) 
 {
   N = n;
@@ -23,7 +22,6 @@ void Divisors::setM(const int m)
 {
   M = m;
 }
-
 
 
 // 1
@@ -42,7 +40,6 @@ void Divisors::generateRandoms()
     cout << i << " ";
   cout << endl;
 } 
-
 
 
 // 2 : sieve of Erastotenes
@@ -67,8 +64,8 @@ void Divisors::sieve()
 // 3
 void Divisors::map()
 {
-//  for (int value : values)
- //   for (int prime : primes)
+  multimap<int,int> pv;
+
   for_each(values.begin(), values.end(), [&](int value){
     for_each(primes.begin(), primes.end(), [&](int prime){
       if (value % prime == 0)
@@ -92,6 +89,7 @@ void Divisors::map()
     cout << "] ";
   cout << endl;
 }  
+
 
 // 4
 void Divisors::inM()
