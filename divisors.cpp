@@ -11,19 +11,6 @@
 
 using namespace std;
 
-
-void Divisors::setN(const int n) 
-{
-  N = n;
-}
-
-
-void Divisors::setM(const int m)
-{
-  M = m;
-}
-
-
 // 1
 void Divisors::generateRandoms()
 {

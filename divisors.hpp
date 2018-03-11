@@ -9,8 +9,6 @@ using namespace std;
 
 class Divisors {
 public:
-  void setN(const int n);
-  void setM(const int m);
   void generateRandoms();
   void sieve();
   void map();
