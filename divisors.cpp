@@ -50,15 +50,16 @@ void Divisors::sieve()
 {
   for (int i=2; i<=M; i++)
     primes.insert(i); 
-//  for_each(primes.begin(), primes.lower_bound(sqrt(M+1)), [&](int prime){//});
-  for (int prime =2; prime<=M; prime++)
+//  for_each(primes.begin(), primes.lower_bound(sqrt(M)), [&](int prime){
+  for_each(primes.begin(), primes.end(), [&](int prime){
     if (primes.find(prime) != primes.end())
       for (int j=2*prime; j<=M; j+=prime)
         primes.erase(j);
-//  });
+  });
   cout << "primes: " << endl;
-  for (int i : primes)
-    cout << i << " ";
+  for_each(primes.begin(), primes.end(), [&](int prime){
+    cout << prime << " ";
+  });
   cout << endl;
 }
 
@@ -66,15 +67,18 @@ void Divisors::sieve()
 // 3
 void Divisors::map()
 {
-  for (int value : values)
-    for (int prime : primes)
+//  for (int value : values)
+ //   for (int prime : primes)
+  for_each(values.begin(), values.end(), [&](int value){
+    for_each(primes.begin(), primes.end(), [&](int prime){
       if (value % prime == 0)
         pv.insert(pair<int,int> (prime,value) );
-
+    });		
+  });
   cout << "map: " << endl;
 
   int last = -1;
-  for (auto p : pv) {
+  for_each(pv.begin(), pv.end(), [&](pair<int, int> p){
     if (last!=p.first) {
       if (last!=-1) 
         cout << "] ";
@@ -83,7 +87,7 @@ void Divisors::map()
     }
     else      
       cout << "," << p.second;
-  }
+  });
   if (last!=-1) 
     cout << "] ";
   cout << endl;
@@ -97,12 +101,8 @@ void Divisors::inM()
     cout << "M = ? ";
     cin >> M;
     const int reason = 500000;
-    if ((outside = ((M < 0) or (M > reason)))) {
-      if (M < 0)
-         cout << "M must be >= 0!" << endl;
-      else
-         cout << "Oh really?!" << endl;  // be reasonable!
-    }
+    if ((outside = ((M < 0) or (M > reason)))) 
+      cout << (M < 0 ? "M must be >= 0!" :  "Oh really?!") << endl;
   } while (outside);
 }
 

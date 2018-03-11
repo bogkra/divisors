@@ -1,9 +1,5 @@
-#include <iostream>
 #include <set>
-#include <cmath>
 #include <map>
-#include <algorithm>
-
 
 // (C) 2018 Boguslaw Krawczuk
 
