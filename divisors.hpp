@@ -11,9 +11,10 @@ class Divisors {
 public:
   void generateRandoms();
   void sieve();
-  void map();
+  void map(); 
   void inM();
   void inN();
+  Divisors(const int n, const int m);
 private:
   set<int> values, primes;
   int N = 0 , M = 0;

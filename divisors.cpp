@@ -5,8 +5,15 @@
 #include <algorithm>
 #include "divisors.hpp"
 
+ 
 
 // (C) 2018 Boguslaw Krawczuk
+
+Divisors::Divisors(const int n=0, const int m=0)
+{
+  N = n;
+  M = m;
+}
 
 
 using namespace std;

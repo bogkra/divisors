@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-  Divisors d;
+  Divisors d(0,0);
 
 // 4  
   d.inM();  
